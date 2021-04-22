@@ -31,6 +31,20 @@ document.querySelector("#btnNavBarMenu").addEventListener("click", () => {
     drawer.open = true;
 });
 
+// ! ----------- BREWERY PAGE --------------------
+let brewewryName = mdc.textField.MDCTextField.attachTo(
+            document.querySelector("#inputBrewName")
+);
+
+let brewewryType = mdc.textField.MDCTextField.attachTo(
+            document.querySelector("#inputBrewType")
+);
+
+let brewewryCity = mdc.textField.MDCTextField.attachTo(
+            document.querySelector("#inputBrewCity")
+);
+
+
 // show home at the start of the program
 document.querySelector("#home").style.display = "block";
 
