@@ -2,52 +2,35 @@
 //     document.querySelector(".mdc-top-app-bar")
 // );
 const drawer = mdc.drawer.MDCDrawer.attachTo( document.querySelector(".mdc-drawer"));
-const listEl = document.querySelector(".mdc-drawer .mdc-list");
+const listEl = document.querySelectorAll(".mdc-list-item");
 const mainContentEl = document.querySelector(".main-content");
 
+//listEl contains all the listElements
+listEl.forEach(item => {
+    item.addEventListener("click", (event) => {
+        drawer.open = false;
+        document.querySelectorAll(".screen").forEach((screen) => {
+                screen.style.display = "none";
+                screen.classList.remove("mdc-list-item--activated");
+        });
 
-listEl.addEventListener("click", (event) => {
-    drawer.open = false;
+        //debugger;
+        //read data-screen attribute
+        let theScreen = event.currentTarget.getAttribute("href");
 
-    document.querySelectorAll(".screen").forEach((screen) => {
-            screen.style.display = "none";
+        //get the class screen that the user clicked on
+        let targetScreen = document.querySelector(theScreen);
+
+        //show display
+        targetScreen.style.display = "block";
+        targetScreen.classList.add("mdc-list-item--activated");
     });
-
-    debugger;
-    //read data-screen attribute
-    let theScreen = event.target.getAttribute("data-screen");
-
-    //get the class screen that the user clicked on
-    let targetScreen = document.querySelector("#div" + theScreen);
-
-    //show display
-    targetScreen.style.display = "block";
 });
-
-
 
 document.querySelector("#btnNavBarMenu").addEventListener("click", () => {
     drawer.open = true;
 });
 
+// show home at the start of the program
+document.querySelector("#home").style.display = "block";
 
-// let navAnchors = document.querySelectorAll("a.nav-link");
-// //console.log("hello");
-// //add a click event listener to each nav link
-// navAnchors.forEach((anchor) => {
-//     anchor.addEventListener("click", (event) => {
-//         //hide all screens first
-//         document.querySelectorAll(".screen").forEach((screen) => {
-//             screen.style.display = "none";
-//         });
-
-//         //read data-screen attribute
-//         let theScreen = event.target.getAttribute("data-screen");
-
-//         //get the class screen that the user clicked on
-//         let targetScreen = document.querySelector("#" + theScreen);
-
-//         //show display
-//         targetScreen.style.display = "block";
-//     });
-// });

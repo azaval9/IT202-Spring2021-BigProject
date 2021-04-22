@@ -17,31 +17,31 @@
         />
         <link rel="stylesheet" href="css/brewery.css" />
     </head>
-    <body>
+    <body class="mdc-typography">
         <aside class="mdc-drawer mdc-drawer--dismissible">
             <div class="mdc-drawer__content">
                 <div class="mdc-list">
-                    <a class="mdc-list-item mdc-list-item--activated" href="#" data-screen="Home">
+                    <a class="mdc-list-item mdc-list-item--activated" href="#home" data-screen="Home">
                         <span class="mdc-list-item__ripple"></span>
                         <i class="material-icons mdc-list-item__graphic" aria-hidden="true"></i>
                         <span id="navBarHome" class="mdc-list-item__text" >Home</span>
                     </a>
-                    <a class="mdc-list-item" href="#" data-screen="Favorites">
+                    <a class="mdc-list-item" href="#favorites" data-screen="Favorites">
                         <span class="mdc-list-item__ripple"></span>
                         <i class="material-icons mdc-list-item__graphic" aria-hidden="true" ></i>
-                        <span id="navBarFavorites" class="mdc-list-item__text" >Favorites</span>
+                        <span id="navBarFavorites" class="mdc-list-item__text">Favorites</span>
                     </a>
-                    <a class="mdc-list-item" href="#" data-screen="Brewery"> 
+                    <a class="mdc-list-item" href="#brewery" data-screen="Brewery"> 
                         <span class="mdc-list-item__ripple"></span>
                         <i class="material-icons mdc-list-item__graphic" aria-hidden="true"></i>
                         <span id="navBarBrewery" class="mdc-list-item__text" >Brewery</span>
                     </a>
-                    <a class="mdc-list-item" href="#" data-screen="Cocktail">
+                    <a class="mdc-list-item" href="#cocktail" data-screen="Cocktail">
                         <span class="mdc-list-item__ripple"></span>
                         <i class="material-icons mdc-list-item__graphic" aria-hidden="true"></i>
                         <span id="navBarCocktail" class="mdc-list-item__text">Cocktail</span>
                     </a>
-                    <a class="mdc-list-item" href="#" data-screen="Reviews">
+                    <a class="mdc-list-item" href="#reviews" data-screen="Reviews">
                         <span class="mdc-list-item__ripple"></span>
                         <i class="material-icons mdc-list-item__graphic" aria-hidden="true"></i>
                         <span id="navBarReviews" class="mdc-list-item__text">Reviews</span>
@@ -53,29 +53,40 @@
         <div class="mdc-drawer-app-content">
             <header class="mdc-top-app-bar app-bar" id="apnp-bar">
                 <div class="mdc-top-app-bar__row">
-                    <section
-                        class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start"
-                    >
-                        <button
-                            class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button"
-                            id="btnNavBarMenu"
-                        >
+                    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+                        <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button" id="btnNavBarMenu">
                             menu
                         </button>
-                        <span class="mdc-top-app-bar__title"
-                            >Choose a Brew</span
-                        >
+                        <span class="mdc-top-app-bar__title">
+                            Choose a Brew
+                        </span>
                     </section>
                 </div>
             </header>
 
             <main class="main-content" id="main-content">
                 <div class="mdc-top-app-bar--fixed-adjust">
-                    <div class="screen" id="divHome">home</div>
-                    <div class="screen" id="divFavorites">favorites</div>
-                    <div class="screen" id="divBrewery">brewery</div>
-                    <div class="screen" id="divCocktail">cocktails</div>
-                    <div class="screen" id="divReviews">reviews</div>
+                    <div class="screen" id="home">
+                        <h1 class="mdc-typography--headline3">Welcome to Choose a Brew!</h1>
+                        <p class="mdc-typography--body1">
+                            A great application to browse for some breweries, cocktail recipes,
+                            reviews, and keep a favorites list. Have fun and please 
+                            DRINK RESPONSIBLE. :)
+                        </p>
+                        <p class="mdc-typography--body1">
+                            Favorites: A list of your favorite breweries and and cocktail recipes. 
+                            <br/>
+                            Breweries: Custom search for breweries.
+                            <br/>
+                            Cocktail: Custom search for cocktail recipes.
+                            <br/>
+                            Reviews: A list of reviews of popular breweries or cocktail recipes. 
+                        </p>
+                    </div>
+                    <div class="screen" id="favorites">favorites</div>
+                    <div class="screen" id="brewery">brewery</div>
+                    <div class="screen" id="cocktail">cocktails</div>
+                    <div class="screen" id="reviews">reviews</div>
                     
                 </div>
             </main>
