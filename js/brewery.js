@@ -32,17 +32,29 @@ document.querySelector("#btnNavBarMenu").addEventListener("click", () => {
 });
 
 // ! ----------- BREWERY PAGE --------------------
-let brewewryName = mdc.textField.MDCTextField.attachTo(
-            document.querySelector("#inputBrewName")
-);
+let brewewryName = document.querySelector("#inputBrewName");
+mdc.textField.MDCTextField.attachTo(brewewryName);
 
-let brewewryType = mdc.textField.MDCTextField.attachTo(
-            document.querySelector("#inputBrewType")
-);
+let brewewryType = document.querySelector("#inputBrewType");
+mdc.textField.MDCTextField.attachTo(brewewryType);
 
-let brewewryCity = mdc.textField.MDCTextField.attachTo(
-            document.querySelector("#inputBrewCity")
-);
+let brewewryCity = document.querySelector("#inputBrewCity");
+mdc.textField.MDCTextField.attachTo(brewewryCity);
+
+let brewerySearch = document.querySelector("#btnBrewSearch");
+mdc.ripple.MDCRipple.attachTo(brewerySearch);
+
+brewerySearch.addEventListener("click", () => {
+    debugger;
+    //user wants to search for a brewery 
+
+    //take the available inputs and display a list of card breweries
+});
+
+let breweryWebsite = document.querySelector("#brewWebsite");
+mdc.ripple.MDCRipple.attachTo(breweryWebsite);
+
+
 
 
 // show home at the start of the program

@@ -1,3 +1,30 @@
 .screen {
     display: none;
 }
+
+.mdc-card__content {
+  padding: 16px;
+  border: 1px solid black;
+}
+
+.mdc-card {
+  /* height: 350px;
+  border: 1px solid black; 
+  display: none;*/
+  width: 550px;
+  padding: 16px;
+} 
+
+.mdc-card__title{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.mdc-card__subhead{
+    font-size: 20px;
+}
+
+.breweryCards{
+    display: block;
+    margin: 5px 0px 5px 0px;
+}
