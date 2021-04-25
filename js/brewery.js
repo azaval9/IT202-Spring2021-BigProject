@@ -32,14 +32,14 @@ document.querySelector("#btnNavBarMenu").addEventListener("click", () => {
 });
 
 // ! ----------- BREWERY PAGE --------------------
-let brewewryName = document.querySelector("#inputBrewName");
-mdc.textField.MDCTextField.attachTo(brewewryName);
+let breweryName = document.querySelector("#inputBrewName");
+mdc.textField.MDCTextField.attachTo(breweryName);
 
-let brewewryType = document.querySelector("#inputBrewType");
-mdc.textField.MDCTextField.attachTo(brewewryType);
+let breweryType = document.querySelector("#inputBrewType");
+mdc.textField.MDCTextField.attachTo(breweryType);
 
-let brewewryCity = document.querySelector("#inputBrewCity");
-mdc.textField.MDCTextField.attachTo(brewewryCity);
+let breweryCity = document.querySelector("#inputBrewCity");
+mdc.textField.MDCTextField.attachTo(breweryCity);
 
 let brewerySearch = document.querySelector("#btnBrewSearch");
 mdc.ripple.MDCRipple.attachTo(brewerySearch);
@@ -48,7 +48,53 @@ brewerySearch.addEventListener("click", () => {
     debugger;
     //user wants to search for a brewery 
 
-    //take the available inputs and display a list of card breweries
+    //delete all the cards 
+    let cards = document.querySelectorAll(".breweryCard:not(#exampleCard)")
+    cards.forEach(element => {
+        element.remove();
+    });
+
+    //create all the string to fetch the information
+    // let params = new URLSearchParams(
+    //     [
+    //     ["name", document.querySelector("#inputName").value]
+    //     ,["brewery_type", document.querySelector("#inputType").value]
+    //     ,["city", document.querySelector("#inputCity").value]
+    //     ]
+    // )
+
+    let dataString = "https://api.openbrewerydb.org/breweries";
+    if(breweryName != ""){
+        debugger;
+        let name = document.querySelector("#inputName").value;
+        dataString += "/search?query=" + name; 
+    }
+
+    fetch(dataString)
+    .then((response) => {
+        return response.json();
+    }).then((json) => {
+        for (let row of json) {
+            console.log(row);
+            let divCards = document.querySelector("#divCards")
+            let exampleCard = document.querySelector("#exampleCard");
+            let cloneCard = exampleCard.cloneNode(true);
+
+            cloneCard.querySelector("#brewName").innerText = row["name"];
+            cloneCard.querySelector("#brewType").innerText = row["brewery_type"];
+            cloneCard.querySelector("#brewAddress").innerText = 
+                row["street"] + "\n" 
+                + row["city"] + ", " + row["state"] + " " + row["postal_code"] + "\n"
+                + row["country"]; 
+            cloneCard.querySelector("#brewPhone").innerText = row["phone"];
+            cloneCard.querySelector("#brewWebsite").href = row["website_url"];
+
+            cloneCard.id = row["id"];
+            cloneCard.classList.remove("hide-breweryCard");
+            cloneCard.classList.add("breweryCard");
+            divCards.append(cloneCard);
+        }
+    });
 });
 
 let breweryWebsite = document.querySelector("#brewWebsite");

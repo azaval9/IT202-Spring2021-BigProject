@@ -93,43 +93,44 @@
                             <span class="mdc-notched-outline">
                                 <span class="mdc-notched-outline__leading"></span>
                                 <span class="mdc-notched-outline__notch">
-                                <span class="mdc-floating-label" id="my-label-id">Name</span>
+                                <span class="mdc-floating-label" id="labelName">Name</span>
                                 </span>
                                 <span class="mdc-notched-outline__trailing"></span>
                             </span>
-                            <input type="text" class="mdc-text-field__input" aria-labelledby="my-label-id">
+                            <input id="inputName" type="text" class="mdc-text-field__input" aria-labelledby="labelName">
                         </label>
                         <label class="mdc-text-field mdc-text-field--outlined" id="inputBrewType">
                             <span class="mdc-notched-outline">
                                 <span class="mdc-notched-outline__leading"></span>
                                 <span class="mdc-notched-outline__notch">
-                                <span class="mdc-floating-label" id="my-label-id">Type</span>
+                                <span class="mdc-floating-label" id="labelType">Type</span>
                                 </span>
                                 <span class="mdc-notched-outline__trailing"></span>
                             </span>
-                            <input type="text" class="mdc-text-field__input" aria-labelledby="my-label-id">
+                            <input id="inputType" type="text" class="mdc-text-field__input" aria-labelledby="labelType">
                         </label>
                         <label class="mdc-text-field mdc-text-field--outlined" id="inputBrewCity">
                             <span class="mdc-notched-outline">
                                 <span class="mdc-notched-outline__leading"></span>
                                 <span class="mdc-notched-outline__notch">
-                                <span class="mdc-floating-label" id="my-label-id">City</span>
+                                <span class="mdc-floating-label" id="labelCity">City</span>
                                 </span>
                                 <span class="mdc-notched-outline__trailing"></span>
                             </span>
-                            <input type="text" class="mdc-text-field__input" aria-labelledby="my-label-id">
+                            <input id="inputCity" type="text" class="mdc-text-field__input" aria-labelledby="labelCity">
                         </label>
                          <button class="mdc-button foo-button" id="btnBrewSearch">
                             <div class="mdc-button__ripple"></div>
                             <span class="mdc-button__label">Search</span>
                         </button>
-                        <div class="breweryCards" id="divCards">
-                            <div class="mdc-card mdc-card--outlined">
+                        <div id="divCards" class="breweryCards" >
+                            <div id="exampleCard" class="hide-breweryCard mdc-card mdc-card--outlined">
                                     <div id="brewName" class="mdc-typography--headline4">Name</div>
                                     <div id="brewType" class="mdc-typography--subtitle1">Type</div>
                                     <p id="brewAddress" class="mdc-typography--body1">Address</p>
                                 <div>
-                                    <a id="brewWebsite" class="mdc-button mdc-card__action mdc-card__action--button">
+                                    <div id="brewPhone" class="mdc-typography--body1">Phone</div>
+                                    <a id="brewWebsite" class="mdc-button mdc-card__action mdc-card__action--button" href="#">
                                         <div class="mdc-button__ripple"></div>
                                         <span class="mdc-button__label">Website</span>
                                     </a>

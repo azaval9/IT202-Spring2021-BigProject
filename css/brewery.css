@@ -25,6 +25,15 @@
 }
 
 .breweryCards{
-    display: block;
-    margin: 5px 0px 5px 0px;
+  display: block;
+  margin: 5px 0px 5px 0px;
+}
+
+.breweryCard{
+  display: block;
+  margin: 5px 0px 5px 0px;
+}
+
+.hide-breweryCard{
+   display: none;
 }
