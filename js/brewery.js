@@ -44,8 +44,11 @@ mdc.textField.MDCTextField.attachTo(breweryCity);
 let brewerySearch = document.querySelector("#btnBrewSearch");
 mdc.ripple.MDCRipple.attachTo(brewerySearch);
 
+let breweryWebsite = document.querySelector("#brewWebsite");
+mdc.ripple.MDCRipple.attachTo(breweryWebsite);
+
 brewerySearch.addEventListener("click", () => {
-    debugger;
+    // debugger;
     //user wants to search for a brewery 
 
     //delete all the cards 
@@ -54,21 +57,25 @@ brewerySearch.addEventListener("click", () => {
         element.remove();
     });
 
-    //create all the string to fetch the information
-    // let params = new URLSearchParams(
-    //     [
-    //     ["name", document.querySelector("#inputName").value]
-    //     ,["brewery_type", document.querySelector("#inputType").value]
-    //     ,["city", document.querySelector("#inputCity").value]
-    //     ]
-    // )
-
+    //create only one option at a time 
     let dataString = "https://api.openbrewerydb.org/breweries";
-    if(breweryName != ""){
-        debugger;
-        let name = document.querySelector("#inputName").value;
+
+    let name = document.querySelector("#inputName").value;
+    let type = document.querySelector("#inputType").value;
+    let city = document.querySelector("#inputCity").value;
+    if(name != ""){
+        // debugger;
         dataString += "/search?query=" + name; 
     }
+    else if(type != ""){
+        // debugger;
+        dataString += "?by_type=" + type;
+    }
+    else if(city != ""){
+        // debugger;
+        dataString += "?by_city=" + city;
+    }
+
 
     fetch(dataString)
     .then((response) => {
@@ -97,12 +104,13 @@ brewerySearch.addEventListener("click", () => {
     });
 });
 
-let breweryWebsite = document.querySelector("#brewWebsite");
-mdc.ripple.MDCRipple.attachTo(breweryWebsite);
 
 
 
 
+
+
+// ! ----------- HOME PAGE --------------------
 // show home at the start of the program
 document.querySelector("#home").style.display = "block";
 
