@@ -47,7 +47,7 @@ mdc.ripple.MDCRipple.attachTo(brewerySearch);
 let breweryWebsite = document.querySelector("#brewWebsite");
 mdc.ripple.MDCRipple.attachTo(breweryWebsite);
 
-brewerySearch.addEventListener("click", () => {
+brewerySearch.addEventListener("click", (e) => {
     // debugger;
     //user wants to search for a brewery 
 
@@ -105,8 +105,54 @@ brewerySearch.addEventListener("click", () => {
 });
 
 
+// ! ----------- COCKTAIL PAGE --------------------
+//add event listeners to search on every click to search 
+let cocktailName = document.querySelector("#inputCocktailName");
+mdc.textField.MDCTextField.attachTo(cocktailName);
 
+let cocktailSearch = document.querySelector("#btnCocktailSearch");
+mdc.ripple.MDCRipple.attachTo(cocktailSearch);
 
+cocktailSearch.addEventListener("click", (e) => {
+    let dataString = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
+    let name = document.querySelector("#inputCName").value;
+    if(name != ""){
+        dataString += name;
+    }
+    else{
+        dataString = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
+    }
+
+    //fetch data and display 
+    fetch(dataString)
+    .then((response) => {
+        return response.json();
+    }).then((json) => {
+        debugger;
+        for (let row in json) {
+            console.log(row);
+            let s = json[row];
+            let divCards = document.querySelector("#divCocktailCards")
+            let exampleCard = document.querySelector("#exampleCocktailCard");
+            let cloneCard = exampleCard.cloneNode(true);
+            debugger;
+            // cloneCard.querySelector("#brewName").innerText = row["name"];
+            // cloneCard.querySelector("#brewType").innerText = row["brewery_type"];
+            // cloneCard.querySelector("#brewAddress").innerText = 
+            //     row["street"] + "\n" 
+            //     + row["city"] + ", " + row["state"] + " " + row["postal_code"] + "\n"
+            //     + row["country"]; 
+            // cloneCard.querySelector("#brewPhone").innerText = row["phone"];
+            // cloneCard.querySelector("#brewWebsite").href = row["website_url"];
+
+            // cloneCard.id = row["id"];
+            // cloneCard.classList.remove("hide-breweryCard");
+            // cloneCard.classList.add("breweryCard");
+            divCards.append(cloneCard);
+        }
+    });
+    
+});
 
 
 

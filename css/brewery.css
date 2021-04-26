@@ -37,3 +37,17 @@
 .hide-breweryCard{
    display: none;
 }
+
+.cocktailCard{
+  display: flex;
+  margin: 5px 0px 5px 0px;
+}
+
+.hide-cocktailCard{
+   display: none;
+}
+
+.cocktail-image{
+  width: fit-content;
+  height: fit-content;
+}

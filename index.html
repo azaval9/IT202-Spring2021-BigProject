@@ -63,7 +63,6 @@
                     </section>
                 </div>
             </header>
-
             <main class="main-content" id="main-content">
                 <div class="mdc-top-app-bar--fixed-adjust">
                     <div class="screen" id="home">
@@ -138,9 +137,66 @@
                                 </div>
                             </div>
                         </div>
-                        
                     </div>
-                    <div class="screen" id="cocktail">cocktails</div>
+                    <div class="screen" id="cocktail">
+                        <h1 class="mdc-typography--headline3">Cocktail Recipes</h1>
+                        <p class="mdc-typography--body1">
+                            Cocktails <br/>
+                            Click the filters and search for a cocktail.
+                        </p>
+                        <div class="mdc-chip-set" role="grid">
+                            <div id="chipRandom" class="mdc-chip" role="row">
+                                <div class="mdc-chip__ripple"></div>
+                                <span role="gridcell">
+                                <span role="button" tabindex="0" class="mdc-chip__primary-action">
+                                    <span class="mdc-chip__text">Random!</span>
+                                </span>
+                                </span>
+                            </div>
+                            <div id="chipAlcoholic" class="mdc-chip" role="row">
+                                <div class="mdc-chip__ripple"></div>
+                                <span role="gridcell">
+                                <span role="button" tabindex="-1" class="mdc-chip__primary-action">
+                                    <span class="mdc-chip__text">Alcoholic</span>
+                                </span>
+                                </span>
+                            </div>
+                            <div id="chipNonAlcoholic" class="mdc-chip" role="row">
+                                <div class="mdc-chip__ripple"></div>
+                                <span role="gridcell">
+                                <span role="button" tabindex="-1" class="mdc-chip__primary-action">
+                                    <span class="mdc-chip__text">Non-Alcoholic</span>
+                                </span>
+                                </span>
+                            </div>
+                        </div>
+                        <label class="mdc-text-field mdc-text-field--outlined" id="inputCocktailName">
+                            <span class="mdc-notched-outline">
+                                <span class="mdc-notched-outline__leading"></span>
+                                <span class="mdc-notched-outline__notch">
+                                <span class="mdc-floating-label" id="labelName">Name</span>
+                                </span>
+                                <span class="mdc-notched-outline__trailing"></span>
+                            </span>
+                            <input id="inputCName" type="text" class="mdc-text-field__input" aria-labelledby="labelName">
+                        </label>
+                        <button class="mdc-button foo-button" id="btnCocktailSearch">
+                            <div class="mdc-button__ripple"></div>
+                            <span class="mdc-button__label">Search</span>
+                        </button>
+                        <div id="divCocktailCards">
+                            <div id="exampleCocktailCard" class="cocktailCard mdc-card mdc-card--outlined">
+                                <!-- ... content ... -->
+                                <div class="my-card__media mdc-card__media mdc-card__media--16-9">
+                                    <div id="cocktailCardName" class="mdc-card__media-content">
+                                        <img id="cocktailImage" class="cocktail-image" src="#" />
+                                    </div>
+                                </div>
+                                <div>hi</div>
+                            
+                            </div>
+                        </div>
+                    </div>
                     <div class="screen" id="reviews">reviews</div>
                     
                 </div>
