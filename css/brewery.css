@@ -39,6 +39,8 @@
 }
 
 .cocktailCard{
+  width: 600px;
+  height: auto;
   display: flex;
   margin: 5px 0px 5px 0px;
 }
@@ -48,6 +50,7 @@
 }
 
 .cocktail-image{
-  width: fit-content;
-  height: fit-content;
+  width: 250px;
+  height: 300px;
+  object-fit: scale-down;
 }

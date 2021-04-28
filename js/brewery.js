@@ -123,6 +123,11 @@ cocktailSearch.addEventListener("click", (e) => {
         dataString = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
     }
 
+    let cocktailCards = document.querySelectorAll(".cocktailCard:not(#exampleCard)")
+    cocktailCards.forEach(element => {
+        element.remove();
+    });
+
     //fetch data and display 
     fetch(dataString)
     .then((response) => {
@@ -131,24 +136,41 @@ cocktailSearch.addEventListener("click", (e) => {
         debugger;
         for (let row in json) {
             console.log(row);
-            let s = json[row];
-            let divCards = document.querySelector("#divCocktailCards")
-            let exampleCard = document.querySelector("#exampleCocktailCard");
-            let cloneCard = exampleCard.cloneNode(true);
-            debugger;
-            // cloneCard.querySelector("#brewName").innerText = row["name"];
-            // cloneCard.querySelector("#brewType").innerText = row["brewery_type"];
-            // cloneCard.querySelector("#brewAddress").innerText = 
-            //     row["street"] + "\n" 
-            //     + row["city"] + ", " + row["state"] + " " + row["postal_code"] + "\n"
-            //     + row["country"]; 
-            // cloneCard.querySelector("#brewPhone").innerText = row["phone"];
-            // cloneCard.querySelector("#brewWebsite").href = row["website_url"];
-
-            // cloneCard.id = row["id"];
-            // cloneCard.classList.remove("hide-breweryCard");
-            // cloneCard.classList.add("breweryCard");
-            divCards.append(cloneCard);
+            let drinkArray = json[row];           
+            drinkArray.forEach(drink => {
+                console.log(drink);
+            
+                let divCards = document.querySelector("#divCocktailCards")
+                let exampleCard = document.querySelector("#exampleCocktailCard");
+                let cloneCard = exampleCard.cloneNode(true);
+                debugger;
+                cloneCard.querySelector("#cocktailImage").src = drink["strDrinkThumb"];
+                cloneCard.querySelector("#drinkANA").innerText = drink["strAlcoholic"]
+                cloneCard.querySelector("#drinkName").innerText = drink["strDrink"];
+                let listOfIngr = "Ingredients:" + "\n";
+                for(i=1; i<=15; i++){
+                    let ingred = "strIngredient" + i;
+                    let measure = "strMeasure" + i;
+                    if(drink[ingred] != null && drink[ingred] != ""){
+                        let tempIngred = drink[ingred].replace('\n','');
+                        let tempMeasure = "";
+                        if(drink[measure] != null && drink[measure] != ""){
+                            tempMeasure = drink[measure].replace('\n','');
+                        }
+                        else{
+                            tempMeasure = drink[measure];
+                        }
+                        listOfIngr += i + ". " + tempIngred + " (" + tempMeasure + ")" + "\n";
+                    }
+                }
+                cloneCard.querySelector("#drinkIngred").innerText = listOfIngr;
+                cloneCard.querySelector("#drinkGlass").innerText = "Glass (Optional): " + drink["strGlass"];
+                cloneCard.querySelector("#drinkInstr").innerText = "Instructions: " + drink["strInstructions"];
+                cloneCard.id = drink["idDrink"];
+                cloneCard.classList.remove("hide-cocktailCard");
+                cloneCard.classList.add("cocktailCard");
+                divCards.append(cloneCard);
+            });
         }
     });
     
