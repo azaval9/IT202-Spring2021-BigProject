@@ -129,7 +129,11 @@ chipRandomSearch.addEventListener("click", (e) => {
         element.remove();
     });
 
-    //fetch data and display 
+    fetchAndDisplayCockatils(dataString);    
+});
+
+function fetchAndDisplayCockatils(dataString){
+//fetch data and display 
     fetch(dataString)
     .then((response) => {
         return response.json();
@@ -174,8 +178,7 @@ chipRandomSearch.addEventListener("click", (e) => {
             });
         }
     });
-    
-});
+};
 
 
 
