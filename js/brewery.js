@@ -113,7 +113,8 @@ mdc.textField.MDCTextField.attachTo(cocktailName);
 let cocktailSearch = document.querySelector("#btnCocktailSearch");
 mdc.ripple.MDCRipple.attachTo(cocktailSearch);
 
-cocktailSearch.addEventListener("click", (e) => {
+let chipRandomSearch = document.querySelector("#chipRandom");
+chipRandomSearch.addEventListener("click", (e) => {
     let dataString = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
     let name = document.querySelector("#inputCName").value;
     if(name != ""){
@@ -133,7 +134,7 @@ cocktailSearch.addEventListener("click", (e) => {
     .then((response) => {
         return response.json();
     }).then((json) => {
-        debugger;
+        //debugger;
         for (let row in json) {
             console.log(row);
             let drinkArray = json[row];           
@@ -143,7 +144,7 @@ cocktailSearch.addEventListener("click", (e) => {
                 let divCards = document.querySelector("#divCocktailCards")
                 let exampleCard = document.querySelector("#exampleCocktailCard");
                 let cloneCard = exampleCard.cloneNode(true);
-                debugger;
+                // debugger;
                 cloneCard.querySelector("#cocktailImage").src = drink["strDrinkThumb"];
                 cloneCard.querySelector("#drinkANA").innerText = drink["strAlcoholic"]
                 cloneCard.querySelector("#drinkName").innerText = drink["strDrink"];
