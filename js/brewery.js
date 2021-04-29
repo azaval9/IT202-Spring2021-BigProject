@@ -115,15 +115,6 @@ mdc.ripple.MDCRipple.attachTo(cocktailSearch);
 
 let chipRandomSearch = document.querySelector("#chipRandom");
 chipRandomSearch.addEventListener("click", (e) => {
-    // let dataString = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
-    // let name = document.querySelector("#inputCName").value;
-    // if(name != ""){
-    //     dataString += name;
-    // }
-    // else{
-    //     dataString = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
-    // }
-
     let dataString = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
     removeCocktailCards();
     fetchAndDisplayCockatils(dataString);    
@@ -132,6 +123,24 @@ chipRandomSearch.addEventListener("click", (e) => {
 let chipAlcoholicSearch = document.querySelector("#chipAlcoholic");
 chipAlcoholicSearch.addEventListener("click", (e) => {
     let dataString = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic"
+    removeCocktailCards();
+    fetchAndDisplayCockatils(dataString);
+});
+
+let chipNonAlcoholic = document.querySelector("#chipNonAlcoholic");
+chipNonAlcoholic.addEventListener("click", (e) => {
+    let dataString = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic"
+    removeCocktailCards();
+    fetchAndDisplayCockatils(dataString);
+});
+
+let chipNameSearch = document.querySelector("#btnCocktailSearch");
+chipNameSearch.addEventListener("click", (e) => {
+    let dataString = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
+    let name = document.querySelector("#inputCName").value;
+    if(name != ""){
+        dataString += name;
+    }
     removeCocktailCards();
     fetchAndDisplayCockatils(dataString);
 });
