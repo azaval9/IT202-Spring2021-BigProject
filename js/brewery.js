@@ -8,75 +8,6 @@ db.version(1).stores({
 });
 
 
-let presetReviews = [
-    {
-        name: "Goose Island Brewpub",
-        type: "Brewery",
-        rating: "9",
-        barDescription: "Awesome pub in the Chicago. Good atmosphere. I would come again.",
-        cocktailDescription: ""
-    },
-    {
-        name: "Lagunitas Brewing Co",
-        type: "Brewery",
-        rating: "8",
-        barDescription: "Good brewery, I like their drinks.",
-        cocktailDescription: ""
-    },
-    {
-        name: "Citrus Coke",
-        type: "Cocktail",
-        rating: "9.5",
-        barDescription: "",
-        cocktailDescription: "Simple and easy drink. I enjoy it on a lazy night."
-    },
-    {
-        name: "Whiskey Sour",
-        type: "Cocktail",
-        rating: "9",
-        barDescription: "",
-        cocktailDescription: "Great flavor, I like to order them at weddings and special ocasions. Great drink to sip on until the food comes out."
-    }
-]
-
-presetReviews.forEach(review => {
-    //remove any cards
-    removeReviewCards();
-
-    //debugger;
-    //clone card
-    let divCards = document.querySelector("#divReviewCards");
-    let exampleCard = document.querySelector("#exampleReviewCard");
-    let cloneCard = exampleCard.cloneNode(true);
-
-    //add information to card
-    cloneCard.querySelector("#reviewName").innerText = review.name;
-    cloneCard.querySelector("#reviewType").innerText = review.type;
-    cloneCard.querySelector("#reviewRating").innerText = review.rating  + "/10";
-
-    if(review.type == "Brewery"){
-        cloneCard.querySelector("#reviewDescription").innerText = review.barDescription
-    }
-    else{
-        cloneCard.querySelector("#reviewDescription").innerText = review.cocktailDescription
-    }
-
-    //add class to card 
-    cloneCard.classList.remove("hide-reviewCard");   
-    cloneCard.classList.add("reviewCard");
-
-
-    divCards.append(cloneCard);
-    //append
-});
-
-function removeReviewCards(){
-    let reviewCards = document.querySelectorAll(".hide-reviewCard:not(#exampleReviewCard)")
-    reviewCards.forEach(element => {
-        element.remove();
-    });
-}
-
 
 function addFavoriteToDatabase(name, type, barDescription, cocktailDescription){
     
@@ -286,4 +217,68 @@ function fetchAndDisplayCockatils(dataString){
 // ! ----------- HOME PAGE --------------------
 // show home at the start of the program
 document.querySelector("#home").style.display = "block";
+
+// ! ----------- REVIEW PAGE ------------------
+let presetReviews = [
+    {
+        name: "Goose Island Brewpub",
+        type: "Brewery",
+        rating: "9",
+        barDescription: "Awesome pub in the Chicago. Good atmosphere. I would come again.",
+        cocktailDescription: ""
+    },
+    {
+        name: "Lagunitas Brewing Co",
+        type: "Brewery",
+        rating: "8",
+        barDescription: "Good brewery, I like their drinks.",
+        cocktailDescription: ""
+    },
+    {
+        name: "Citrus Coke",
+        type: "Cocktail",
+        rating: "9.5",
+        barDescription: "",
+        cocktailDescription: "Simple and easy drink. I enjoy it on a lazy night."
+    },
+    {
+        name: "Whiskey Sour",
+        type: "Cocktail",
+        rating: "9",
+        barDescription: "",
+        cocktailDescription: "Great flavor, I like to order them at weddings and special ocasions. Great drink to sip on until the food comes out."
+    }
+];
+
+function removeReviewCards(){
+    let reviewCards = document.querySelectorAll(".hide-reviewCard:not(#exampleReviewCard)")
+    reviewCards.forEach(element => {
+        element.remove();
+    });
+}
+
+presetReviews.forEach(review => {
+    removeReviewCards();
+
+    let divCards = document.querySelector("#divReviewCards");
+    let exampleCard = document.querySelector("#exampleReviewCard");
+    let cloneCard = exampleCard.cloneNode(true);
+
+    cloneCard.querySelector("#reviewName").innerText = review.name;
+    cloneCard.querySelector("#reviewType").innerText = review.type;
+    cloneCard.querySelector("#reviewRating").innerText = review.rating  + "/10";
+
+    if(review.type == "Brewery"){
+        cloneCard.querySelector("#reviewDescription").innerText = review.barDescription
+    }
+    else{
+        cloneCard.querySelector("#reviewDescription").innerText = review.cocktailDescription
+    }
+
+    cloneCard.classList.remove("hide-reviewCard");   
+    cloneCard.classList.add("reviewCard");
+    divCards.append(cloneCard);
+});
+
+
 

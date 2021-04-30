@@ -35,7 +35,7 @@
 }
 
 .hide-breweryCard{
-   display: none;
+  display: none;
 }
 
 .cocktailCard{
@@ -46,7 +46,7 @@
 }
 
 .hide-cocktailCard{
-   display: none;
+  display: none;
 }
 
 .cocktail-image{
@@ -60,6 +60,15 @@
 }
 
 .reviewCard{
+  display: block;
+  margin: 5px 0px 5px 0px;
+}
+
+.hide-favoriteCard{
+  display: none;
+}
+
+.favoriteCard{
   display: block;
   margin: 5px 0px 5px 0px;
 }
