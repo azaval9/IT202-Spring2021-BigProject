@@ -7,12 +7,19 @@ db.version(1).stores({
     reviews: '++id, name, type, rating, review, username'
 });
 
-
-
 function addFavoriteToDatabase(name, type, barDescription, cocktailDescription){
     
 };
 
+function refreshFavoritesPage(){
+    //remove all cards 
+
+    //loop through the data base
+
+    //add cards 
+
+    
+};
 
 const drawer = mdc.drawer.MDCDrawer.attachTo( document.querySelector(".mdc-drawer"));
 const listEl = document.querySelectorAll(".mdc-list-item");
@@ -205,6 +212,17 @@ function fetchAndDisplayCockatils(dataString){
                 cloneCard.querySelector("#drinkGlass").innerText = "Glass (Optional): " + drink["strGlass"];
                 cloneCard.querySelector("#drinkInstr").innerText = "Instructions: " + drink["strInstructions"];
                 cloneCard.id = drink["idDrink"];
+
+                //add event listener to favorites button 
+                cloneCard.querySelector("#btnCocktailAddFavorite").addEventListener("click", (e) => {
+                    //add to the database send it all information
+                    debugger;
+                    let currentCard = e.currentTarget.parentElement;
+                    let cName = currentCard.querySelector("#drinkName").innerText;
+                    addFavoriteToDatabase();
+                    refreshFavoritesPage();
+                });
+
                 cloneCard.classList.remove("hide-cocktailCard");
                 cloneCard.classList.add("cocktailCard");
                 divCards.append(cloneCard);
@@ -280,5 +298,8 @@ presetReviews.forEach(review => {
     divCards.append(cloneCard);
 });
 
+
+// ! ---------- FAVORITES PAGE ----------------
+let cocktailFavoriteButtons = document.querySelectorAll("#btnCocktailAddFavorite")
 
 
