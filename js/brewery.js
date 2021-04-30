@@ -40,6 +40,7 @@ function addFavoriteCard(item, cursor){
     cloneCard.querySelector("#favoriteRemove").addEventListener("click", (e)=>{
         debugger;
         removefromDatabase(e.currentTarget.parentElement.parentElement.querySelector("#favoriteName").innerText);
+        e.currentTarget.parentElement.parentElement.remove();
     });
 
     cloneCard.classList.remove("hide-favoriteCard");
