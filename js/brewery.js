@@ -20,6 +20,12 @@ function addFavoriteToDatabase(fname, ftype, fbarDescription, fcocktailDescripti
     });
 };
 
+function removefromDatabase(fname){
+    // db.reviews.aasdfasdf.catch(function(error) {
+    //     alert ("Ooops: " + error);
+    // });
+};
+
 function addFavoriteCard(item, cursor){
     //debugger;
     let divFavoriteCards = document.querySelector("#divFavoriteCards")
@@ -31,13 +37,18 @@ function addFavoriteCard(item, cursor){
     cloneCard.querySelector("#reviewBreweryDescription").innerText = item.barDescription;
     cloneCard.querySelector("#reviewCocktailDescription").innerText = item.cocktailDescription;
 
+    cloneCard.querySelector("#favoriteRemove").addEventListener("click", (e)=>{
+        debugger;
+        removefromDatabase(e.currentTarget.parentElement.parentElement.querySelector("#favoriteName").innerText);
+    });
+
     cloneCard.classList.remove("hide-favoriteCard");
     cloneCard.classList.add("favoriteCard")
     divFavoriteCards.append(cloneCard);
 }
 
 function refreshFavoritesPage(){
-    debugger;
+    //debugger;
     // //remove all cards 
     let favoriteCards = document.querySelectorAll(".favoriteCard:not(#exampleFavoriteCard)")
     favoriteCards.forEach(element => {
@@ -143,6 +154,18 @@ brewerySearch.addEventListener("click", (e) => {
                 + row["country"]; 
             cloneCard.querySelector("#brewPhone").innerText = row["phone"];
             cloneCard.querySelector("#brewWebsite").href = row["website_url"];
+
+            cloneCard.querySelector("#btnBrewAddFavorite").addEventListener("click", (e) => {
+                    //add to the database send it all information
+                    debugger;
+                    let currentCard = e.currentTarget.parentElement;
+                    let cName = currentCard.querySelector("#brewName").innerText;
+                    let cType = currentCard.querySelector("#brewType").innerText;
+                    let cBarDesc = currentCard.querySelector("#brewAddress").innerText;
+                    let cDescription = "";
+                    addFavoriteToDatabase(cName, cType, cBarDesc, cDescription);
+                    refreshFavoritesPage();
+                });
 
             cloneCard.id = row["id"];
             cloneCard.classList.remove("hide-breweryCard");
@@ -332,5 +355,6 @@ presetReviews.forEach(review => {
 
 // ! ---------- FAVORITES PAGE ----------------
 let cocktailFavoriteButtons = document.querySelectorAll("#btnCocktailAddFavorite")
+refreshFavoritesPage();
 
 
