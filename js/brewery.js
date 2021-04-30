@@ -7,18 +7,46 @@ db.version(1).stores({
     reviews: '++id, name, type, rating, review, username'
 });
 
-function addFavoriteToDatabase(name, type, barDescription, cocktailDescription){
-    
+function addFavoriteToDatabase(fname, ftype, fbarDescription, fcocktailDescription){
+    db.reviews.put(
+        {
+            name: fname,
+            type: ftype,
+            barDescription: fbarDescription,
+            cocktailDescription: fcocktailDescription
+        }
+    ).catch(function(error) {
+        alert ("Ooops: " + error);
+    });
 };
 
+function addFavoriteCard(item, cursor){
+    //debugger;
+    let divFavoriteCards = document.querySelector("#divFavoriteCards")
+    let exampleCard = document.querySelector("#exampleFavoriteCard");
+    let cloneCard = exampleCard.cloneNode(true);
+
+    cloneCard.querySelector("#favoriteName").innerText = item.name;
+    cloneCard.querySelector("#favoriteType").innerText = item.type;
+    cloneCard.querySelector("#reviewBreweryDescription").innerText = item.barDescription;
+    cloneCard.querySelector("#reviewCocktailDescription").innerText = item.cocktailDescription;
+
+    cloneCard.classList.remove("hide-favoriteCard");
+    cloneCard.classList.add("favoriteCard")
+    divFavoriteCards.append(cloneCard);
+}
+
 function refreshFavoritesPage(){
-    //remove all cards 
+    debugger;
+    // //remove all cards 
+    let favoriteCards = document.querySelectorAll(".favoriteCard:not(#exampleFavoriteCard)")
+    favoriteCards.forEach(element => {
+        element.remove();
+    });
 
-    //loop through the data base
+    //loop through the data base and add card
+    db.reviews.each(addFavoriteCard);
 
-    //add cards 
-
-    
 };
 
 const drawer = mdc.drawer.MDCDrawer.attachTo( document.querySelector(".mdc-drawer"));
@@ -219,7 +247,10 @@ function fetchAndDisplayCockatils(dataString){
                     debugger;
                     let currentCard = e.currentTarget.parentElement;
                     let cName = currentCard.querySelector("#drinkName").innerText;
-                    addFavoriteToDatabase();
+                    let cType = "Cocktail: " + currentCard.querySelector("#drinkANA").innerText;
+                    let cBarDesc = "";
+                    let cDescription = currentCard.querySelector("#drinkIngred").innerText;
+                    addFavoriteToDatabase(cName, cType, cBarDesc, cDescription);
                     refreshFavoritesPage();
                 });
 
