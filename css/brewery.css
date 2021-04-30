@@ -54,3 +54,12 @@
   height: 300px;
   object-fit: scale-down;
 }
+
+.hide-reviewCard{
+   display: none;
+}
+
+.reviewCard{
+  display: block;
+  margin: 5px 0px 5px 0px;
+}

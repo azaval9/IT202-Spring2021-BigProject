@@ -15,6 +15,7 @@
             rel="stylesheet"
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
         />
+        <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
         <link rel="stylesheet" href="css/brewery.css" />
     </head>
     <body class="mdc-typography">
@@ -25,11 +26,6 @@
                         <span class="mdc-list-item__ripple"></span>
                         <i class="material-icons mdc-list-item__graphic" aria-hidden="true"></i>
                         <span id="navBarHome" class="mdc-list-item__text">Home</span>
-                    </a>
-                    <a class="mdc-list-item" href="#favorites" data-screen="Favorites">
-                        <span class="mdc-list-item__ripple"></span>
-                        <i class="material-icons mdc-list-item__graphic" aria-hidden="true" ></i>
-                        <span id="navBarFavorites" class="mdc-list-item__text">Favorites</span>
                     </a>
                     <a class="mdc-list-item" href="#brewery" data-screen="Brewery"> 
                         <span class="mdc-list-item__ripple"></span>
@@ -45,6 +41,11 @@
                         <span class="mdc-list-item__ripple"></span>
                         <i class="material-icons mdc-list-item__graphic" aria-hidden="true"></i>
                         <span id="navBarReviews" class="mdc-list-item__text">Reviews</span>
+                    </a>
+                     <a class="mdc-list-item" href="#favorites" data-screen="Favorites">
+                        <span class="mdc-list-item__ripple"></span>
+                        <i class="material-icons mdc-list-item__graphic" aria-hidden="true" ></i>
+                        <span id="navBarFavorites" class="mdc-list-item__text">Favorites</span>
                     </a>
                 </div>
             </div>
@@ -82,7 +83,6 @@
                             Reviews: A list of reviews of popular breweries or cocktail recipes. 
                         </p>
                     </div>
-                    <div class="screen" id="favorites">favorites</div>
                     <div class="screen" id="brewery">
                         <h1 class="mdc-typography--headline3">Breweries</h1>
                         <p class="mdc-typography--body1">
@@ -134,6 +134,10 @@
                                         <div class="mdc-button__ripple"></div>
                                         <span class="mdc-button__label">Website</span>
                                     </a>
+                                    <button class="mdc-button foo-button" id="btnBrewAddReview">
+                                        <div class="mdc-button__ripple"></div>
+                                        <span class="mdc-button__label">Add Review</span>
+                                    </button> 
                                 </div>
                             </div>
                         </div>
@@ -206,11 +210,40 @@
                                 </span>
                                 <p id="drinkInstr" class="mdc-typography--body1">
                                     Instructions:
-                                </p>                                
+                                </p>
+                                <button class="mdc-button foo-button" id="btnCocktailAddReview">
+                                    <div class="mdc-button__ripple"></div>
+                                    <span class="mdc-button__label">Add Review</span>
+                                </button>                                
                             </div>
                         </div>
                     </div>
-                    <div class="screen" id="reviews">reviews</div>
+                    <div class="screen" id="reviews">
+                        <h1 class="mdc-typography--headline3">Reviews</h1>
+                        <p class="mdc-typography--body1">
+                            Recently reviewed items from the Choose a Brew community.
+                        </p>
+                        <div id="divReviewCards">
+                            <div id="exampleReviewCard" class="hide-reviewCard mdc-card mdc-card--outlined">
+                                    <div id="reviewName" class="mdc-typography--headline4">Name</div>
+                                    <div id="reviewType" class="mdc-typography--subtitle1">Type</div>
+                                    <div id="reviewRating" class="mdc-typography--body1">Rating</div>
+                                    <div id="reviewDescription" class="mdc-typography--body1">Description</div>
+                                <div>
+                                <button class="mdc-button foo-button" id="btnGeneralAddReview">
+                                    <div class="mdc-button__ripple"></div>
+                                    <span class="mdc-button__label">Add Review</span>
+                                </button> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="screen" id="favorites">
+                        <h1 class="mdc-typography--headline3">Favorites</h1>
+                        <p class="mdc-typography--body1">
+                            All your saved favorite Breweries or Cocktail Recipes.
+                        </p>
+                    </div>
                     
                 </div>
             </main>
