@@ -1,5 +1,5 @@
 let CACHE_NAME = "my-site-cache-v1";
-let urlsToCache = ["/", "asteroid.png", "p3.png", "diamond.png", "index.html"];
+let urlsToCache = ["/"];
 
 self.addEventListener("install", function (event) {
     // Perform install steps
