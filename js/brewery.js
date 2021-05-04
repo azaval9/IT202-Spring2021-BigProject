@@ -27,7 +27,6 @@ function removefromDatabase(fname){
 };
 
 function addFavoriteCard(item, cursor){
-    //debugger;
     let divFavoriteCards = document.querySelector("#divFavoriteCards")
     let exampleCard = document.querySelector("#exampleFavoriteCard");
     let cloneCard = exampleCard.cloneNode(true);
@@ -38,7 +37,6 @@ function addFavoriteCard(item, cursor){
     cloneCard.querySelector("#reviewCocktailDescription").innerText = item.cocktailDescription;
 
     cloneCard.querySelector("#favoriteRemove").addEventListener("click", (e)=>{
-        debugger;
         removefromDatabase(e.currentTarget.parentElement.parentElement.querySelector("#favoriteName").innerText);
         e.currentTarget.parentElement.parentElement.remove();
     });
@@ -49,8 +47,6 @@ function addFavoriteCard(item, cursor){
 }
 
 function refreshFavoritesPage(){
-    //debugger;
-    // //remove all cards 
     let favoriteCards = document.querySelectorAll(".favoriteCard:not(#exampleFavoriteCard)")
     favoriteCards.forEach(element => {
         element.remove();
@@ -74,7 +70,6 @@ listEl.forEach(item => {
                 screen.classList.remove("mdc-list-item--activated");
         });
 
-        //debugger;
         //read data-screen attribute
         let theScreen = event.currentTarget.getAttribute("href");
 
@@ -108,7 +103,6 @@ let breweryWebsite = document.querySelector("#brewWebsite");
 mdc.ripple.MDCRipple.attachTo(breweryWebsite);
 
 brewerySearch.addEventListener("click", (e) => {
-    // debugger;
     //user wants to search for a brewery 
 
     //delete all the cards 
@@ -124,15 +118,12 @@ brewerySearch.addEventListener("click", (e) => {
     let type = document.querySelector("#inputType").value;
     let city = document.querySelector("#inputCity").value;
     if(name != ""){
-        // debugger;
         dataString += "/search?query=" + name; 
     }
     else if(type != ""){
-        // debugger;
         dataString += "?by_type=" + type;
     }
     else if(city != ""){
-        // debugger;
         dataString += "?by_city=" + city;
     }
 
@@ -142,7 +133,6 @@ brewerySearch.addEventListener("click", (e) => {
         return response.json();
     }).then((json) => {
         for (let row of json) {
-            console.log(row);
             let divCards = document.querySelector("#divCards")
             let exampleCard = document.querySelector("#exampleCard");
             let cloneCard = exampleCard.cloneNode(true);
@@ -158,7 +148,6 @@ brewerySearch.addEventListener("click", (e) => {
 
             cloneCard.querySelector("#btnBrewAddFavorite").addEventListener("click", (e) => {
                     //add to the database send it all information
-                    debugger;
                     let currentCard = e.currentTarget.parentElement;
                     let cName = currentCard.querySelector("#brewName").innerText;
                     let cType = currentCard.querySelector("#brewType").innerText;
@@ -230,17 +219,13 @@ function fetchAndDisplayCockatils(dataString){
     .then((response) => {
         return response.json();
     }).then((json) => {
-        //debugger;
         for (let row in json) {
-            console.log(row);
             let drinkArray = json[row];           
-            drinkArray.forEach(drink => {
-                console.log(drink);
-            
+            drinkArray.forEach(drink => {            
                 let divCards = document.querySelector("#divCocktailCards")
                 let exampleCard = document.querySelector("#exampleCocktailCard");
                 let cloneCard = exampleCard.cloneNode(true);
-                // debugger;
+
                 cloneCard.querySelector("#cocktailImage").src = drink["strDrinkThumb"];
                 cloneCard.querySelector("#drinkANA").innerText = drink["strAlcoholic"]
                 cloneCard.querySelector("#drinkName").innerText = drink["strDrink"];
@@ -268,7 +253,6 @@ function fetchAndDisplayCockatils(dataString){
                 //add event listener to favorites button 
                 cloneCard.querySelector("#btnCocktailAddFavorite").addEventListener("click", (e) => {
                     //add to the database send it all information
-                    debugger;
                     let currentCard = e.currentTarget.parentElement;
                     let cName = currentCard.querySelector("#drinkName").innerText;
                     let cType = "Cocktail: " + currentCard.querySelector("#drinkANA").innerText;
